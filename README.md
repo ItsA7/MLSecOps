@@ -11,7 +11,7 @@ As machine learning becomes the core of modern applications, securing the ML lif
 
 Moving beyond traditional post-deployment compliance auditing, this architecture engineers compliance directly into the build phase. It enforces strict "Shift-Left" security principles to automatically detect hardcoded secrets, analyze ML models for embedded malware, package the application, and securely deploy it to AWS via least-privilege IAM roles.
 
-This architecture serves as the foundational deployment engine for highly secure, enterprise-grade AI cybersecurity SaaS platforms like Helios.
+This architecture serves as the foundational deployment engine for highly secure, enterprise-grade AI cybersecurity SaaS platforms.
 
 ## 🛠️ Technology Stack
 * **Continuous Integration / Automation:** GitHub Actions
