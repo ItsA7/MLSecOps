@@ -26,13 +26,15 @@ jobs:
 
       # Step 4: Run our script to make the dummy.pkl file
       - name: Generate the AI Model
-        run: python train.py
+        run: |
+          python train.py
+          python poison.py
 
       # Step 5: The Magic! Scan the AI model for vulnerabilities
       - name: AI Security Scan - ModelScan
         run: |
           pip install modelscan
-          modelscan -p ./speaker_encoder_fp16.onnx
+          modelscan -p .
 
       # Step 6: Show the robot our AWS Keycard
       - name: Configure AWS credentials
