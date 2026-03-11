@@ -4,7 +4,7 @@
 ![Security](https://img.shields.io/badge/security-ModelScan%20%7C%20Gitleaks-blue)
 ![Cloud](https://img.shields.io/badge/deployment-AWS%20ECR%20%7C%20EC2-orange)
 
-![MLSecOps Data Flow Diagram](mlsecops-dfd.png)
+![MLSecOps Data Flow Diagram]()
 *(Note: Ensure your generalized architecture diagram is uploaded to the repo as `mlsecops-dfd.png`)*
 
 ## 🚀 Overview
@@ -35,6 +35,8 @@ This architecture serves as the foundational deployment engine for highly secure
 
 ## 🧪 Security Validation: The "Poison Pickle" RCE Test
 To validate the "Fail-Closed" design of this pipeline, a simulated cyberattack was conducted using a "Poisoned Pickle" injection vector.
+
+*Testing automated CI/CD triggers.*
 
 * **The Attack:** A Python script generated a malicious `.pkl` file containing an unsafe `__reduce__` method designed to execute an arbitrary Remote Code Execution (RCE) command (`os.system`).
 * **The Defense:** The automated `ModelScan` gateway successfully introspected the binary, identified the `CRITICAL` vulnerability (Unsafe operator 'system' from module 'posix'), and immediately triggered Exit Code 1.
