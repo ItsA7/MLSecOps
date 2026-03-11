@@ -1,0 +1,39 @@
+name: ML Model Security Pipeline
+
+# This tells the robot to run every time we save (push) code
+on: [push]
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest # This provides a temporary free computer to run our tests
+
+    steps:
+      # Step 1: Download our code to the temporary computer
+      - name: Grab the blueprints (Checkout Code)
+        uses: actions/checkout@v3
+
+      # Step 2: Scan for accidental passwords (Gitleaks)
+      - name: Security Scan - Look for leaked secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 3: Set up Python so we can create and scan the AI model
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      # Step 4: Run our script to make the dummy.pkl file
+      - name: Generate the AI Model
+        run: python train.py
+
+      # Step 5: The Magic! Scan the AI model for vulnerabilities
+      - name: AI Security Scan - ModelScan
+        run: |
+          pip install modelscan
+          modelscan -p ./dummy_model.pkl
+
+      # Step 6: If everything is safe, box it up!
+      - name: Build the Docker Shipping Container
+        run: docker build -t my-secure-ai-model .
