@@ -32,7 +32,7 @@ jobs:
       - name: AI Security Scan - ModelScan
         run: |
           pip install modelscan
-          modelscan -p ./dummy_model.pkl
+          modelscan -p ./speaker_encoder_fp16.onnx
 
       # Step 6: Show the robot our AWS Keycard
       - name: Configure AWS credentials
