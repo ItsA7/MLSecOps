@@ -24,11 +24,16 @@ jobs:
         with:
           python-version: '3.9'
 
+      # Step 3.5: Scan Python code for application vulnerabilities
+      - name: Python Code Security Scan (Bandit)
+        run: |
+          pip install bandit
+          bandit -r .
+
       # Step 4: Run our script to make the dummy.pkl file
       - name: Generate the AI Model
         run: |
           python train.py
-          python poison.py
 
       # Step 5: The Magic! Scan the AI model for vulnerabilities
       - name: AI Security Scan - ModelScan
