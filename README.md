@@ -13,7 +13,8 @@ Moving beyond traditional post-deployment compliance auditing, this architecture
 
 ## 🛠️ Technology Stack
 * **Continuous Integration / Automation:** GitHub Actions
-* **Application Security (AppSec):** * **Gitleaks:** Secret & Credential Scanning
+* **Application Security (AppSec):**
+  * **Gitleaks:** Secret & Credential Scanning
   * **Bandit:** Static Application Security Testing (SAST) for Python
 * **Machine Learning Security (MLSec):** * **Protect AI ModelScan:** ML Vulnerability & Malware Scanning
 * **Containerization:** Docker
